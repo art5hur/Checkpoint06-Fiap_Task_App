@@ -37,10 +37,11 @@ class TaskGroupProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> deleteTask(String groupId) async {
+  Future<void> deleteTaskGroup(String groupId) async {
     try {
-      await _repo.deleteTask(groupId);
-      _taskGroupsWithCounts.removeWhere((taskGroupWithCounts) => taskGroupWithCounts.taskGroup.id == groupId);
+      await _repo.deleteTaskGroup(groupId);
+      _taskGroupsWithCounts.removeWhere(
+          (taskGroupWithCounts) => taskGroupWithCounts.taskGroup.id == groupId);
       notifyListeners();
     } catch (e) {
       print(e);
