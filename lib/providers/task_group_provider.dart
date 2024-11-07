@@ -29,9 +29,7 @@ class TaskGroupProvider extends ChangeNotifier {
   Future<void> createTaskGroup(TaskGroup taskGroup) async {
     try {
       await _repo.createTaskGroup(taskGroup);
-      TaskGroupWithCounts taskGroupWithCount = 0 as TaskGroupWithCounts;
-      _taskGroupsWithCounts.add(taskGroupWithCount);
-      notifyListeners();
+      await listTaskGroups();
     } catch (e) {
       print(e);
     }
